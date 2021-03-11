@@ -1,4 +1,4 @@
-```{r,include=FALSE}
+```{r, include=FALSE}
 source("common.R")
 ```
 
@@ -10,8 +10,7 @@ source("common.R")
 
 ## Welcome to ggplot2
 
-ggplot2 is an R package for producing statistical, or data, graphics.
-Unlike most other graphics packages, ggplot2 has an underlying grammar, based on the Grammar of Graphics [@wilkinson:2006], that allows you to compose graphs by combining independent components.
+ggplot2 是用于生成统计或数据图形的 R 包。与大多数其他图形包不同，ggplot2 具有基于图形语法 [@wilkinson：2006] 的基础语法，该语法使您可以通过组合独立的组件来构成图形。
 This makes ggplot2 powerful.
 Rather than being limited to sets of pre-defined graphics, you can create novel graphics that are tailored to your specific problem.
 While the idea of having to learn a grammar may sound overwhelming, ggplot2 is actually easy to learn: there is a simple set of core principles and there are very few special cases.
@@ -50,25 +49,25 @@ The first description of the components follows below.
 It introduces some of the terminology that will be used throughout the book and outlines the basic function of each component.
 Don't worry if it doesn't make sense right away: you'll have many more opportunities to learn about the components and how they work together.
 
-All plots are composed of the **data**, the information you want to visualise, and a **mapping**, the description of how the data's variables are mapped to aesthetic attributes.
+All plots are composed of the**data**, the information you want to visualise, and a**mapping**, the description of how the data's variables are mapped to aesthetic attributes.
 There are five mapping components:
 
--   A **layer** is a collection of geometric elements and statistical transformations.
+-   A**layer**is a collection of geometric elements and statistical transformations.
     Geometric elements, **geom**s for short, represent what you actually see in the plot: points, lines, polygons, etc.
     Statistical transformations, **stat**s for short, summarise the data: for example, binning and counting observations to create a histogram, or fitting a linear model.
 
--   **Scale**s map values in the data space to values in the aesthetic space.
+- **Scale**s map values in the data space to values in the aesthetic space.
     This includes the use of colour, shape or size.
     Scales also draw the legend and axes, which make it possible to read the original data values from the plot (an inverse mapping).
 
--   A **coord**, or coordinate system, describes how data coordinates are mapped to the plane of the graphic.
+-   A**coord**, or coordinate system, describes how data coordinates are mapped to the plane of the graphic.
     It also provides axes and gridlines to help read the graph.
     We normally use the Cartesian coordinate system, but a number of others are available, including polar coordinates and map projections.
 
--   A **facet** specifies how to break up and display subsets of data as small multiples.
+-   A**facet**specifies how to break up and display subsets of data as small multiples.
     This is also known as conditioning or latticing/trellising.
 
--   A **theme** controls the finer points of display, like the font size and background colour.
+-   A**theme**controls the finer points of display, like the font size and background colour.
     While the defaults in ggplot2 have been chosen with care, you may need to consult other references to create an attractive plot.
     A good starting place is Tufte's early works [@tufte:1990; @tufte:1997; @tufte:2001].
 
@@ -153,15 +152,15 @@ There you will learn about how to control the theming system of ggplot2 and how 
 
 Before we continue, make sure you have all the software you need for this book:
 
--   **R**: If you don't have R installed already, you may be reading the wrong book; I assume a basic familiarity with R throughout this book.
+- **R**: If you don't have R installed already, you may be reading the wrong book; I assume a basic familiarity with R throughout this book.
     If you'd like to learn how to use R, I'd recommend my [*R for Data Science*](https://r4ds.had.co.nz/) which is designed to get you up and running with R with a minimum of fuss.
 
--   **RStudio**: RStudio is a free and open source integrated development environment (IDE) for R.
+- **RStudio**: RStudio is a free and open source integrated development environment (IDE) for R.
     While you can write and use R code with any R environment (including R GUI and [ESS](http://ess.r-project.org)), RStudio has some nice features specifically for authoring and debugging your code.
     We recommend giving it a try, but it's not required to be successful with ggplot2 or with this book.
     You can download RStudio Desktop from <https://www.rstudio.com/products/rstudio/download>
 
--   **R packages**: This book uses a bunch of R packages.
+- **R packages**: This book uses a bunch of R packages.
     You can install them all at once by running:
 
     ```{r, echo = FALSE, cache = FALSE}
@@ -212,8 +211,8 @@ This version of the book was built with `r R.version.string` and the following p
 ```{r, echo = FALSE, results="asis"}
 pkgs <- sessioninfo::package_info(pkgs, dependencies = FALSE)
 df <- tibble(
-  package = pkgs$package,
-  version = pkgs$ondiskversion,
+  package = pkgs$package, 
+  version = pkgs$ondiskversion, 
   source = gsub("@", "\\\\@", pkgs$source)
 )
 knitr::kable(df, format = "markdown")
