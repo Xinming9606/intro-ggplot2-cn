@@ -1,0 +1,40 @@
+delete_merged_file: true
+new_session: true
+
+rmd_files:
+- "0-index.Rmd"
+
+- "0.1-preface-3e.Rmd"
+- "0.2-preface-2e.Rmd"
+
+- "1-introduction.Rmd"
+- "2-getting-started.Rmd"
+
+- "3-toolbox.Rmd"
+- "4-individual-geoms.Rmd"
+- "5-collective-geoms.Rmd"
+- "6-statistical-summaries.Rmd"
+- "7-maps.Rmd"
+- "8-networks.Rmd"
+- "9-annotations.Rmd"
+- "10-arranging-plots.Rmd"
+
+- "11-scales.Rmd"
+- "12-scales-position.Rmd"
+- "13-scales-colour.Rmd"
+- "14-scales-other.Rmd"
+
+- "15-mastery.Rmd"
+- "16-layers.Rmd"
+- "17-scales-guides.Rmd"
+- "18-coord.Rmd"
+- "19-facet.Rmd"
+- "20-themes.Rmd"
+
+- "21-extending.Rmd"
+- "22-programming.Rmd"
+- "23-internals.Rmd"
+- "24-extensions.Rmd"
+- "25-ext-springs.Rmd"
+
+- "26-references.Rmd"
