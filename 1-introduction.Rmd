@@ -12,11 +12,7 @@ source("common.R")
 
 ggplot2 是用于生成统计或数据图形的 R 包。与大多数其他图形包不同，ggplot2 具有基于图形语法 [@wilkinson：2006] 的基础语法，该语法使您可以通过组合独立的组件来构成图形。这使 ggplot2 功能强大。您可以创建针对您的特定问题的新颖图形，而不仅限于预先定义的图形集。虽然必须学习语法的想法听起来不胜枚举，但 ggplot2 实际上很容易学习：有一套简单的核心原则，很少有特殊情况。困难的部分是，您可能需要一点时间才能忘记使用其他图形工具带来的所有先入之见。
 
-ggplot2 provides beautiful, hassle-free plots that take care of fiddly details like drawing legends.
-In fact, its carefully chosen defaults mean that you can produce publication-quality graphics in seconds.
-However, if you do have special formatting requirements, ggplot2's comprehensive theming system makes it easy to do what you want.
-Ultimately, this means that rather than spending your time making your graph look pretty, you can instead focus on creating the graph that best reveals the message in your data.
-
+ggplot2提供漂亮，无忧的绘图，可处理诸如图例之类的小巧细节。实际上，其精心选择的默认值意味着您可以在几秒钟内制作出具有出版物质量的图形。但是，如果您确实有特殊的格式要求，则ggplot2的综合主题系统使您可以轻松地进行所需的操作。最终，这意味着您不必花时间使图表看起来很漂亮，而可以专注于创建最能揭示数据中信息的图表。
 ggplot2 is designed to work iteratively.
 You start with a layer that shows the raw data.
 Then you add layers of annotations and statistical summaries.
