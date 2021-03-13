@@ -13,23 +13,25 @@ columns(1, 2 / 3)
 
 ## Introduction
 
-本章的目的是教您如何制作有用的图形。尽快使用 ggplot2。您将学习以下方面的基础知识 ggplot（）和一些有用的“食谱”，使最重要情节。 ggplot（）可以让您仅用几行就可以绘制出复杂的图代码，因为它基于丰富的基础理论，即图形。在这里，我们将跳过理论，而将重点放在实践上，而在后面的章节中，您将学习如何使用的完整表达能力语法。
+本章的目的是教你如何尽快使用 `ggplot2` 生成有用的图形。你将学习 `ggplot()` 的基础知识以及一些有用的“配方”，以制作出最重要的图表。 `ggplot()` 允许你仅用几行代码即可完成复杂的绘图，因为它基于丰富的基础理论（即图形语法）。在这里，我们将跳过理论，而将重点放在练习上，在以后的章节中，你将学习如何使用语法的全部表达能力。
 
-在本章中，您将学习：
+在本章中，你将学习：
 
-- 关于 ggplot2 随附的 `mpg` 数据集，第 15 节 \ @ref（燃料经济数据）。
+- 关于 `ggplot2` 内置的 `mpg` 数据集，见小节\@ref(fuel-economy-data)。
 
-- 每个情节的三个关键组成部分：数据，美学和几何图形 \ @ref（基本用途）。
+- The three key components of every plot: data, aesthetics and geoms, 小节 \@ref(basic-use)。
 
-- 如何通过美学将更多变量添加到情节中\ @ref（美学）。
+- How to add additional variables to a plot with aesthetics, 小节 \@ref(aesthetics)。
 
-- 如何使用由构面创建的小倍数，请参见\ @ref（qplot-faceting）。
+- How to display additional categorical variables in a plot using small multiples created by faceting, Section\@ref(qplot-faceting)。
 
-- 您可以使用多种不同的几何图形来创建不同的几何图形绘图类型，请参见\ @ref（plot-geoms）。
+- A variety of different geoms that you can use to create different types of
+plots, 小节 \@ref(plot-geoms)。
 
-- 如何修改轴，第\ @ref（axes）节。
+- How to modify the axes, 小节 \@ref(axes)。
 
-- 除了显示对象外，您还可以使用绘图对象执行的操作，例如将其保存到磁盘的\ @ref（output）部分。
+- Things you can do with a plot object other than display it, like save it to
+disk, Section\@ref(output)。
 
 ## Fuel economy data {#fuel-economy-data}
 
@@ -234,7 +236,7 @@ ggplot(mpg, aes(displ, hwy)) +
 In the first plot, the value "blue" is scaled to a pinkish colour, and a
 legend is added. In the second plot, the points are given the R colour
 blue. This is an important technique and you'll learn more about it in
-Section \@ref(setting-mapping). See `vignette("ggplot2-specs")` for the
+小节 \@ref(setting-mapping). See `vignette("ggplot2-specs")` for the
 values needed for colour and other aesthetics.
 
 Different types of aesthetic attributes work better with different types
@@ -268,7 +270,7 @@ ignorance to knowledge.
 Another technique for displaying additional categorical variables on a
 plot is faceting. Faceting creates tables of graphics by splitting the
 data into subsets and displaying the same graph for each subset. You'll
-learn more about faceting in Section \@ref(facet), but it's such a
+learn more about faceting in 小节 \@ref(facet), but it's such a
 useful technique that you need to know it right away. \index{Faceting}
 
 There are two types of faceting: grid and wrapped. Wrapped is the most
@@ -287,7 +289,7 @@ ggplot(mpg, aes(displ, hwy)) +
 
 You might wonder when to use faceting and when to use aesthetics. You'll
 learn more about the relative advantages and disadvantages of each in
-Section \@ref(group-vs-facet).
+小节 \@ref(group-vs-facet).
 
 ### Exercises
 
@@ -528,7 +530,7 @@ ggplot(mpg, aes(manufacturer)) +
   geom_bar()
 ```
 
-(You'll learn how to fix the labels in Section \@ref(theme-axis)).
+(You'll learn how to fix the labels in 小节 \@ref(theme-axis)).
 
 Bar charts can be confusing because there are two rather different plots
 that are both commonly called bar charts. The above form expects you to
@@ -730,7 +732,7 @@ Once you have a plot object, there are a few things you can do with it:
 print(p)
     ```
 
--   Save it to disk with `ggsave()` , described in Section \@ref(saving).
+-   Save it to disk with `ggsave()` , described in 小节 \@ref(saving).
 
     ```{r, eval = FALSE}
 # Save png to disk
