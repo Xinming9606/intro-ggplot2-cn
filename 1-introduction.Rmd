@@ -4,11 +4,11 @@ source("common.R")
 
 \mainmatter
 
-# (PART) Getting started {.unnumbered}
+# (PART) 入门 {.unnumbered}
 
-# Introduction {#introduction}
+# 引言 {#introduction}
 
-## Welcome to ggplot2
+## 欢迎来到 `ggplot2` 
 
  `ggplot2` 是用于生成统计或数据图形的 R 包。与大多数其他图形包不同， `ggplot2` 具有基于图形语法 [@wilkinson：2006] 的基础语法，该语法使你可以通过组合独立的组件来构成图形。这使 `ggplot2` 功能强大。你可以创建针对你的特定问题的新颖图形，而不仅限于预先定义的图形集。虽然必须学习语法的想法听起来不胜枚举，但 `ggplot2` 实际上很容易学习：有一套简单的核心原则，很少有特殊情况。困难的部分是，你可能需要一点时间才能忘记使用其他图形工具带来的所有先入之见。
 
@@ -23,7 +23,7 @@ source("common.R")
 
 假设你是新手，不熟悉语法，这本书将向你介绍 `ggplot2` 。教你基础知识，以便你可以重新创建已经熟悉的图；向你展示如何使用语法创建新类型的图形；最终使你成为可以构建新组件以扩展语法的专家。
 
-## What is the grammar of graphics?
+## 什么是图形语法？
 
 @wilkinson：2006 创建了图形语法来描述所有统计图形基础的基本特征。图形语法是什么是统计图形的答案。 `ggplot2` [@wickham：2007d] 建立在 Wilkinson 语法的基础上，着眼于图层的首要性并对其进行调整以供在 R 中使用。简而言之，语法告诉我们，图形将数据映射到美学属性（颜色，形状，大小）几何对象（点，线，条）的集合。绘图还可以包括数据的统计转换以及有关绘图坐标系的信息。构面可用于绘制数据的不同子集。这些独立组件的组合构成了图形。
 
@@ -55,7 +55,7 @@ source("common.R")
     对于动态和交互式图形，你需要在其他地方查看（也许在下面的 `ggvis` 中查看）。
     @cook:2007 提供了有关交互式图形包 `GGobi` 的出色介绍。可以使用 `rggobi` 包将 `GGobi` 连接到 R [@wickham:2008b]。
 
-## How does `ggplot2` fit in with other R graphics?
+## `ggplot2` 如何与其他 R 图形配合?
 
 既然 R 中提供了许多其他图形系统：基本图形（base graphics），网格图形（grid graphics）和晶格（lattice graphics）/格子图形（tresilling graphics）。那么 `ggplot2` 与它们有何不同？
 
@@ -125,7 +125,7 @@ source("common.R")
     ```{r code = install, eval = FALSE}
     ```
 
-## Other resources {#other-resources}
+## 其他资源 {#other-resources}
 
 本书教您 `ggplot2` 语法的各个元素以及如何将它们组合在一起，但是并没有详细记录每个功能。随着对 `ggplot2` 的使用变得越来越复杂和多样化，您将需要其他文档。
 
