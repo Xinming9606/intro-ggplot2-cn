@@ -1,8 +1,8 @@
 # ggplot2 book
 
-This is a fork of [ggplot2-book](https://github.com/hadley/ggplot2-book).
+这是 [ggplot2-book](https://github.com/hadley/ggplot2-book) 的中文翻译项目。翻译约定详见 [[conventions]]
 
-The project is to build a chinese version of this wonderful book for education.
+This is a fork of [ggplot2-book](https://github.com/hadley/ggplot2-book). The project is to build a chinese version of this wonderful book for education.
 
 <!-- badges: start -->
 [![Build status](https://github.com/hadley/ggplot2-book/workflows/workflow/badge.svg)](https://github.com/hadley/ggplot2-book/actions)

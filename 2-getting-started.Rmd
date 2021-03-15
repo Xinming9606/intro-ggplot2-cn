@@ -9,155 +9,109 @@ source("common.R")
 columns(1, 2 / 3)
 ```
 
-# First steps {#getting-started}
+# 第一步 {#getting-started}
 
-## Introduction
+## 引言
 
-本章的目的是教你如何尽快使用 `ggplot2` 生成有用的图形。你将学习 `ggplot()` 的基础知识以及一些有用的“配方”，以制作出最重要的图表。 `ggplot()` 允许你仅用几行代码即可完成复杂的绘图，因为它基于丰富的基础理论（即图形语法）。在这里，我们将跳过理论，而将重点放在练习上，在以后的章节中，你将学习如何使用语法的全部表达能力。
+本章的目的是教你如何尽快使用 ggplot2 生成有用的图形。你将学习 `ggplot()` 的基础知识以及一些有用的“配方”，以制作出最重要的图表。 `ggplot()` 允许你仅用几行代码即可完成复杂的绘图，因为它基于丰富的基础理论（即图形语法）。在这里，我们将跳过理论，而将重点放在练习上，在以后的章节中，你将学习如何使用语法的全部表达能力。
 
 在本章中，你将学习：
 
-- 关于 `ggplot2` 内置的 `mpg` 数据集，见小节\@ref(fuel-economy-data)。
+- 关于 ggplot2 内置的 mpg 数据集，见小节 \@ref(fuel-economy-data)。
 
-- The three key components of every plot: data, aesthetics and geoms, 小节 \@ref(basic-use)。
+- 每个情节的三个关键组成部分：数据（data），美学（aesthetics）和几何图形（geom），见小节 \@ref(basic-use)。
 
-- How to add additional variables to a plot with aesthetics, 小节 \@ref(aesthetics)。
+- 如何通过美学将更多变量添加到绘图中，见小节 \@ref(aesthetics)。
 
-- How to display additional categorical variables in a plot using small multiples created by faceting, Section\@ref(qplot-faceting)。
+- 如何使用通过刻面（facet）创建的多个小技巧在绘图中显示其他类别变量，见小节 \@ref(qplot-faceting)。
 
-- A variety of different geoms that you can use to create different types of
-plots, 小节 \@ref(plot-geoms)。
+- 您可以使用多种不同的几何图形来创建不同类型的绘图，见小节 \@ref(plot-geoms)。
 
-- How to modify the axes, 小节 \@ref(axes)。
+- 如何修改轴（axes），见小节 \@ref(axes)。
 
-- Things you can do with a plot object other than display it, like save it to
-disk, Section\@ref(output)。
+- 除了显示对象外，您还可以使用绘图对象执行的操作，例如将其保存到磁盘，见小节 \@ref(output)。
 
-## Fuel economy data {#fuel-economy-data}
+## 燃油经济性数据 {#fuel-economy-data}
 
-In this chapter, we'll mostly use one data set that's bundled with
-ggplot2: `mpg` . It includes information about the fuel economy of
-popular car models in 1999 and 2008, collected by the US Environmental
-Protection Agency, <http://fueleconomy.gov>. You can access the data by
-loading ggplot2: \index{Data!mpg@\texttt{mpg}}
+在本章中，我们将主要使用与 ggplot2 绑定的一个数据集：mpg 。它包含由美国环境保护署收集的有关 1999 年和 2008 年流行车型的燃油经济性的信息， <http://fueleconomy.gov>。您可以通过加载 ggplot2 来访问数据：\index{Data!mpg@\texttt{mpg}}
 
 ```{r}
 library(ggplot2)
 mpg
 ```
 
-The variables are mostly self-explanatory:
+这里的变量大多是顾名思义的：
 
-- `cty` and `hwy` record miles per gallon (mpg) for city and highway
-    driving.
+- `cty` 和 `hwy` 记录城市和高速公路行驶的每加仑英里数（mpg）。
 
-- `displ` is the engine displacement in litres.
+- `displ` 是发动机排量（升）。
 
-- `drv` is the drivetrain: front wheel (f), rear wheel (r) or four
-    wheel (4).
+- `drv` 是传动系统：前轮（f），后轮（r）或四轮（4）。
 
-- `model` is the model of car. There are 38 models, selected because
-    they had a new edition every year between 1999 and 2008.
+- `model` 是汽车的模型。之所以选择 38 种型号，是因为它们在 1999 年至 2008 年之间每年都有新版本。
 
-- `class` is a categorical variable describing the "type" of car: two
-    seater, SUV, compact, etc.
+- `class` 是描述汽车“类型”的类别变量：两个座位，SUV，紧凑型车等。
 
-This dataset suggests many interesting questions. How are engine size
-and fuel economy related? Do certain manufacturers care more about fuel
-economy than others? Has fuel economy improved in the last ten years? We
-will try to answer some of these questions, and in the process learn how
-to create some basic plots with ggplot2.
+该数据集提出了许多有趣的问题。发动机尺寸和燃油经济性如何相关？某些制造商是否比其他制造商更在意燃油经济性？在过去的十年中，燃油经济性有所改善吗？ 我们将尝试回答其中一些问题，并在此过程中学习如何使用 ggplot2 创建一些基本图。
 
-### Exercises
+### 练习题
 
-1.  List five functions that you could use to get more information about
-    the `mpg` dataset.
+1.  列出五个函数，您可以使用这些函数来获取有关 mpg 数据集的更多信息。
 
-2.  How can you find out what other datasets are included with ggplot2?
+2.  您如何找出 ggplot2 还包含哪些其他数据集？
 
-3.  Apart from the US, most countries use fuel consumption (fuel
-    consumed over fixed distance) rather than fuel economy (distance
-    travelled with fixed amount of fuel). How could you convert `cty` 
-    and `hwy` into the European standard of l/100km?
+3.  除美国外，大多数国家/地区使用的是油耗（固定距离内消耗的燃油），而不是燃油经济性（固定量的燃油所行驶的距离）。 您如何将 `cty` 和 `hwy` 转换为 l / 100km 的欧洲标准？
 
-4.  Which manufacturer has the most models in this dataset? Which model
-    has the most variations? Does your answer change if you remove the
-    redundant specification of drive train (e.g. "pathfinder 4wd", "a4
-    quattro") from the model name?
+4.  哪个制造商在该数据集中拥有最多的模型？ 哪个型号变化最大？如果从型号名称中删除了传动系统的冗余规格（例如“pathfinder 4wd”，“a4 quattro”），答案会有所变化吗？
 
-## Key components {#basic-use}
+## 关键组件 {#basic-use}
 
-Every ggplot2 plot has three key components:
+每个 ggplot2 图都有三个关键组成部分：
 
-1.**data**, 
+1.**数据**, 
 
-2.  A set of**aesthetic mappings**between variables in the data and
-    visual properties, and
+2.  数据和视觉属性之间的一组**美学映射**
 
-3.  At least one layer which describes how to render each observation.
-    Layers are usually created with a**geom**function.
+3.  至少一层描述如何呈现每个观察值。通常使用 `geom` 函数创建图层。
 
-Here's a simple example: \index{Scatterplot} \indexf{ggplot}
+这里有一个简单的例子： \index{Scatterplot} \indexf{ggplot}
 
 ```{r qscatter}
 ggplot(mpg, aes(x = displ, y = hwy)) +
   geom_point()
 ```
 
-This produces a scatterplot defined by:
+这将产生一个散点图，其定义为：
 
-1.  Data: `mpg` .
-2.  Aesthetic mapping: engine size mapped to x position, fuel economy to
-    y position.
-3.  Layer: points.
+1.  数据：mpg。
+2.  美学映射：发动机尺寸映射到 `x` 位置，燃油经济性映射到 `y` 位置。
+3.  层数：分。
 
-Pay attention to the structure of this function call: data and aesthetic
-mappings are supplied in `ggplot()` , then layers are added on with `+` .
-This is an important pattern, and as you learn more about ggplot2 you'll
-construct increasingly sophisticated plots by adding on more types of
-components.
+注意此函数调用的结构： `ggplot()` 中提供了数据和美学映射，然后将图层添加到 `+` 上。 这是一种重要的模式，随着您对 ggplot2 的更多了解，您将通过添加更多类型的组件来构建越来越复杂的图。
 
-Almost every plot maps a variable to `x` and `y` , so naming these
-aesthetics is tedious, so the first two unnamed arguments to `aes()` 
-will be mapped to `x` and `y` . This means that the following code is
-identical to the example above:
+几乎每个图都将变量映射到 `x` 和 `y` ，因此命名这些美学是乏味的，因此， `aes()` 的前两个未命名参数将被映射为 `x` 和 `y` 。这意味着以下代码与上面的示例相同：
 
 ```{r, eval = FALSE}
 ggplot(mpg, aes(displ, hwy)) +
   geom_point()
 ```
 
-I'll stick to that style throughout the book, so don't forget that the
-first two arguments to `aes()` are `x` and `y` . Note that I've put each
-command on a new line. I recommend doing this in your own code, so it's
-easy to scan a plot specification and see exactly what's there. In this
-chapter, I'll sometimes use just one line per plot, because it makes it
-easier to see the differences between plot variations.
+在整本书中，我都会坚持这种风格，因此，请不要忘记 `aes()` 的前两个参数是 x 和 y。请注意，我已将每个命令放在新行上。我建议您在自己的代码中执行此操作，因此可以轻松扫描绘图说明并准确查看其中的内容。在本章中，有时每幅图只使用一条线，因为这样可以更轻松地查看图变体之间的差异。
 
-The plot shows a strong correlation: as the engine size gets bigger, the
-fuel economy gets worse. There are also some interesting outliers: some
-cars with large engines get higher fuel economy than average. What sort
-of cars do you think they are?
+该图显示出很强的相关性：随着发动机尺寸的增大，燃油经济性也越来越差。还有一些有趣的离群值：一些具有大型发动机的汽车获得的燃油经济性高于平均水平。您认为它们是哪种汽车？
 
-### Exercises
+### 练习题
 
-1.  How would you describe the relationship between `cty` and `hwy` ? Do
-    you have any concerns about drawing conclusions from that plot?
+1.  您如何描述 `cty` 和 `hwy` 之间的关系？您是否对从该图得出结论有任何担忧？
 
-2.  What does `ggplot(mpg, aes(model, manufacturer)) + geom_point()` 
-    show? Is it useful? How could you modify the data to make it more
-    informative?
+2. `ggplot(mpg, aes(model, manufacturer)) + geom_point()` 会显示什么？它有用吗？您如何修改数据以使其更具参考价值？
 
 ```{r}
 ggplot(mpg, aes(model, manufacturer)) +
   geom_point()
 ```
 
-3.  Describe the data, aesthetic mappings and layers used for each of
-    the following plots. You'll need to guess a little because you
-    haven't seen all the datasets and functions yet, but use your common
-    sense! See if you can predict what the plot will look like before
-    running the code.
+3.  描述以下每个图所使用的数据，美学映射和图层。您需要稍作猜测，因为您尚未看到所有数据集和函数，但请使用常识！在运行代码之前，请查看是否可以预测绘图的外观。
 
 -   
 
@@ -187,25 +141,15 @@ ggplot(mpg, aes(cty)) +
   geom_histogram()
 ```
 
-## Colour, size, shape and other aesthetic attributes {#aesthetics}
+## 颜色，大小，形状和其他美学属性 {#aesthetics}
 
-To add additional variables to a plot, we can use other aesthetics like
-colour, shape, and size (NB: while I use British spelling throughout
-this book, ggplot2 also accepts American spellings). These work in the
-same way as the `x` and `y` aesthetics, and are added into the call to
- `aes()` : \index{Aesthetics} \indexf{aes}
+要向图表添加其他变量，我们可以使用其他美学元素，例如颜色，形状和大小（注意：尽管我在本书中都使用英式拼写，但 ggplot2 也接受美式拼写）。它们的工作方式与美学的 `x` 和 `y` 相同，并被添加到对 `aes()` 的调用中：\index{Aesthetics} \indexf{aes}
 
 - `aes(displ, hwy, colour = class)` 
 - `aes(displ, hwy, shape = drv)` 
 - `aes(displ, hwy, size = cyl)` 
 
-ggplot2 takes care of the details of converting data (e.g., 'f', 'r', 
-'4') into aesthetics (e.g., 'red', 'yellow', 'green') with a**scale**.
-There is one scale for each aesthetic mapping in a plot. The scale is
-also responsible for creating a guide, an axis or legend, that allows
-you to read the plot, converting aesthetic values back into data values.
-For now, we'll stick with the default scales provided by ggplot2. You'll
-learn how to override them in Chapter \@ref(scale-colour).
+ggplot2 takes care of the details of converting data (e.g., 'f', 'r', '4') into aesthetics (e.g., 'red', 'yellow', 'green') with a**scale**. There is one scale for each aesthetic mapping in a plot. The scale is also responsible for creating a guide, an axis or legend, that allows you to read the plot, converting aesthetic values back into data values. For now, we'll stick with the default scales provided by ggplot2. You'll learn how to override them in Chapter \@ref(scale-colour).
 
 To learn more about those outlying variables in the previous
 scatterplot, we could map the class variable to colour:
@@ -279,7 +223,7 @@ later. To facet a plot you simply add a faceting specification with
  `facet_wrap()` , which takes the name of a variable preceded by `~` .
 \indexf{facet\_wrap}
 
- `r columns(1, 2 / 3, 1)` 
+ `r columns(1, 2 / 3, 1)`
 
 ```{r facet}
 ggplot(mpg, aes(displ, hwy)) +
@@ -570,7 +514,7 @@ on the x-axis, showing how a single variable has changed over time. Path
 plots show how two variables have simultaneously changed over time, with
 time encoded in the way that observations are connected.
 
-Because the year variable in the `mpg` dataset only has two values, 
+Because the year variable in the mpg dataset only has two values, 
 we'll show some time series plots using the `economics` dataset, which
 contains economic data on the US measured over the last 40 years. The
 figure below shows two plots of unemployment over time, both produced
