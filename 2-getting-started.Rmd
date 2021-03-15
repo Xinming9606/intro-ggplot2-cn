@@ -149,23 +149,18 @@ ggplot(mpg, aes(cty)) +
 - `aes(displ, hwy, shape = drv)` 
 - `aes(displ, hwy, size = cyl)` 
 
-ggplot2将数据（例如，`f1`，`r`，`4`）转换为带有**标度**的美学对象（例如，`red`，`yellow`，`green`）的绘图。绘图中的每个绘图贴图都有一个标度。 The scale is also responsible for creating a guide, an axis or legend, that allows you to read the plot, converting aesthetic values back into data values. For now, we'll stick with the default scales provided by ggplot2. You'll learn how to override them in Chapter \@ref(scale-colour).
+ggplot2将数据（例如，`f1`，`r`，`4`）转换为带有**标度**的美学对象（例如，`red`，`yellow`，`green`）的绘图。绘图中的每个绘图贴图都有一个标度。 标度还可以创建参考线，轴或图例，使您可以读取图，将美学属性值转换回数据值。现在，我们将继续使用ggplot2提供的默认标度。您将在第\ @ref（scale-colour）章中学习如何覆盖它们。
 
-To learn more about those outlying variables in the previous
-scatterplot, we could map the class variable to colour:
+要了解有关上一散点图中的离群变量，我们可以将class变量映射到colour：
 
 ```{r qplot-aesthetics}
 ggplot(mpg, aes(displ, hwy, colour = class)) +
   geom_point()
 ```
 
-This gives each point a unique colour corresponding to its class. The
-legend allows us to read data values from the colour, showing us that
-the group of cars with unusually high fuel economy for their engine size
-are two seaters: cars with big engines, but lightweight bodies.
+这为每个点提供了与其类别相对应的唯一颜色。图例使我们能够从颜色中读取数据值，向我们展示了燃油经济性极高的是两座汽车(two seaters)，引擎大但车身轻巧。
 
-If you want to set an aesthetic to a fixed value, without scaling it, do
-so in the individual layer outside of `aes()` . Compare the following two
+如果您想将美学元素设置为固定值而不使用标度，请在`aes（）`的外层执行。比较以下两行代码的区别
 plots: \index{Aesthetics!setting}
 
  `r columns(2, 2/3)` 
@@ -177,25 +172,11 @@ ggplot(mpg, aes(displ, hwy)) +
   geom_point(colour = "blue")
 ```
 
-In the first plot, the value "blue" is scaled to a pinkish colour, and a
-legend is added. In the second plot, the points are given the R colour
-blue. This is an important technique and you'll learn more about it in
-小节 \@ref(setting-mapping). See `vignette("ggplot2-specs")` for the
-values needed for colour and other aesthetics.
+在第一个图中，值“ blue”被映射为为粉红色，并且有图例。 在第二个图中，点被设置为R蓝色。这是一项重要的技术，您将在小节 \@ref(setting-mapping). 请参阅`vignette（“ ggplot2-specs”）`如何设置颜色和其他美学元素。
 
-Different types of aesthetic attributes work better with different types
-of variables. For example, colour and shape work well with categorical
-variables, while size works well for continuous variables. The amount of
-data also makes a difference: if there is a lot of data it can be hard
-to distinguish different groups. An alternative solution is to use
-faceting, as described next.
+不同类型的美学属性与不同类型的变量配合使用效果更好。例如，颜色和形状可以很好地与分类变量配合使用，而尺寸对于连续变量则可以配合使用。大数据量也会有所不同：如果有大量数据，则很难区分不同的组。另一种解决方案是使用刻面，如下所述。
 
-When using aesthetics in a plot, less is usually more. It's difficult to
-see the simultaneous relationships among colour and shape and size, so
-exercise restraint when using aesthetics. Instead of trying to make one
-very complex plot that shows everything at once, see if you can create a
-series of simple plots that tell a story, leading the reader from
-ignorance to knowledge.
+当在图中使用美学元素时，less is more。很难同时看到颜色，形状和大小之间的关系，因此在使用美学元素时要适量。与其尝试制作一个可以一次显示所有内容的非常复杂的图，不如看看是否可以创建一系列讲述故事的简单图，带领读者从无知到了解。
 
 ### Exercises
 
